@@ -27,6 +27,16 @@ $router->group(['prefix' => 'users/'], function ($router) {
     $router->get('/{id}', 'UserController@show');
     $router->post('/{id}', 'UserController@edit');
     $router->delete('/{id}', 'UserController@delete');
+    $router->get('/{user_id}/role', 'UserController@role');
+});
+
+$router->group(['prefix' => 'roles'], function ($router) {
+    $router->get('/', 'RoleController@list');
+    $router->post('/', 'RoleController@create');
+    $router->get('/{id}', 'RoleController@show');
+    $router->post('/{id}', 'RoleController@edit');
+    $router->delete('/{id}', 'RoleController@delete');
+    $router->get('/{role_id}/users', 'RoleController@users');
 });
 
 $router->get('/', function () use ($router) {

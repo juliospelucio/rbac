@@ -18,16 +18,16 @@ class UserController extends Controller
 
     public function list()
     {
-        return User::get();
+        return User::all();
     }
 
     public function create(Request $request)
     {
-        $company = new User($request->all());
-        $company->password = $request->input('password');
-        $company->save();
+        $user = new User($request->all());
+        $user->password = $request->input('password');
+        $user->save();
 
-        return $company;
+        return $user;
     }
 
     public function show($id)
@@ -50,5 +50,12 @@ class UserController extends Controller
         // $user->delete();
 
         return true;
+    }
+
+    public function role($user_id)
+    {
+        $role = User::find($user_id)->role();
+
+        return response()->json($role);
     }
 }
