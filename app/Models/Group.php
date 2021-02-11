@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-class Role extends Model implements AuthenticatableContract, AuthorizableContract
+class Group extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
 
@@ -22,13 +22,8 @@ class Role extends Model implements AuthenticatableContract, AuthorizableContrac
         'name'
     ];
 
-    public function users()
+    public function roles()
     {
-        return $this->hasMany(User::class, 'id_role');
-    }
-
-    public function group()
-    {
-        return $this->belongsToMany(Group::class, 'groups_roles')->as('name');
+        return $this->belongsToMany(Role::class, 'groups_roles')->as('name');
     }
 }

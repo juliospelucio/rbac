@@ -17,9 +17,9 @@ class RoleController extends Controller
     }
 
     /**
-     * Create a new controller instance.
      *
      *
+     * @return App\Models\Role
      */
     public function list()
     {
@@ -60,5 +60,12 @@ class RoleController extends Controller
         $users = Role::find($role_id)->users;
 
         return $users;
+    }
+
+    public function group($role_id)
+    {
+        $group = Role::find($role_id)->group;
+
+        return $group;
     }
 }
