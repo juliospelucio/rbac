@@ -16,6 +16,11 @@ class RoleController extends Controller
     {
     }
 
+    /**
+     * Create a new controller instance.
+     *
+     *
+     */
     public function list()
     {
         return Role::get();
@@ -52,7 +57,7 @@ class RoleController extends Controller
 
     public function users($role_id)
     {
-        $users = Role::find($role_id)->users();
+        $users = Role::find($role_id)->users;
 
         return $users;
     }

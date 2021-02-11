@@ -54,8 +54,8 @@ class UserController extends Controller
 
     public function role($user_id)
     {
-        $role = User::find($user_id)->role();
+        $role = User::find($user_id)->role;
 
-        return response()->json($role);
+        return $role;
     }
 }
